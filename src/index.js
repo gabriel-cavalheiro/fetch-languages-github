@@ -2,12 +2,13 @@ const api = require('./api')
 const express = require('express');
 const cors = require('cors')
 const server = express();
+const port = process.env.PORT || 5000;
 
 server.use(cors());
 
 server.use(express.json());
 
-server.listen(5000);
+server.listen(port);
 
 server.get('/', (req, res) => {
   return res.send({message: "Olá deu boa"})
@@ -25,4 +26,4 @@ server.get('/languages/:id&:order', async (req, res) => {
   }
 })
 
-console.log('server is running in localhost:5000')
+console.log(`server is running in localhost:${port}`)
